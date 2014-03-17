@@ -1,31 +1,43 @@
 ﻿@{
-    ViewBag.Title = "Registration Page";
+    ViewBag.Title = "Registration Information";
 }
 @section featured {
     <section class="featured">
         <div class="content-wrapper">
-            <hgroup class="title">
+            <hgroup>
                 <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
+
             </hgroup>
            
         </div>
+        <table class="content-wrapper">
+            <tr>
+                <td>Date of Visit <br />
+                   @Html.DropDownList("Month", Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)}), "Choose") 
+                   @Html.DropDownList("Day", Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString()}), "Choose") 
+                   @Html.DropDownList("Month", Enumerable.Range(1900, 115).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString()}), "Choose")
+                </td>
+                <td>Patient's Primary Care Physician (P.C.P.)<br />
+                    <input id="PCPName" type="text" />
+                </td>
+                <td>P.C.P. Phone<br />
+                     <input id="PCPPhone" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Is this a Maternity visit?<br />
+                    <input id="rdoMaternity" type="radio" />
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        
     </section>
 }
-<table style="width: 100%;">
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-</table>
+
